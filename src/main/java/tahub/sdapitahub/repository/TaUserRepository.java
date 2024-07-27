@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import tahub.sdapitahub.entity.TaUser;
 import tahub.sdapitahub.repository.mapper.TaUserMapper;
+import tahub.sdapitahub.repository.mapper.TaCustomUserMapper;
 import tahub.sdapitahub.repository.query.UserQuery;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class TaUserRepository {
     private JdbcTemplate jdbcTemplate;
 
     public List<TaUser> findAll() {
-        return jdbcTemplate.query(UserQuery.FIND_ALL.getQuery(), new TaUserMapper());
+        return jdbcTemplate.query(UserQuery.FIND_ALL.getQuery(), new TaCustomUserMapper());
     }
 
     public Optional<TaUser> findById(Long id) {
