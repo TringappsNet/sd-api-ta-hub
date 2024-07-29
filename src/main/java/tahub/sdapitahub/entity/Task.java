@@ -28,6 +28,7 @@ public class Task {
     private LocalDateTime lastUpdated;
 
     private String clientName;
+    private int columnId;
 
     // Private constructor to enforce builder usage
     private Task(Builder builder) {
@@ -52,11 +53,19 @@ public class Task {
         this.lastUpdated = builder.lastUpdated;
 
         this.clientName = builder.clientName;
-
+        this.columnId = builder.columnId;
     }
 
     // Getters and Setters
 
+
+    public int getColumnId() {
+        return columnId;
+    }
+
+    public void setColumnId(int columnId) {
+        this.columnId = columnId;
+    }
 
     public Long getTaskId() {
         return taskId;
@@ -243,6 +252,7 @@ public class Task {
         private LocalDateTime lastUpdated;
 
         private String clientName;
+        private int columnId;
 
         public Builder taskId(Long taskId) {
             this.taskId = taskId;
@@ -343,6 +353,12 @@ public class Task {
             this.clientName = clientName;
             return this;
         }
+
+        public Builder columnId(int columnId) {
+            this.columnId = columnId;
+            return this;
+        }
+
         public Task build() {
             return new Task(this);
         }
