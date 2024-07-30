@@ -1,7 +1,7 @@
 package tahub.sdapitahub.repository.query;
 
 public enum UserQuery {
-    FIND_ALL("SELECT * FROM ta_users"),
+    FIND_ALL("SELECT user_id, role_id, first_name, last_name, username, email, phone FROM ta_users"),
     FIND_BY_ID("SELECT * FROM ta_users WHERE user_id = ?"),
     FIND_BY_INVITE_TOKEN("SELECT * FROM ta_users WHERE invite_token = ?"),
     SAVE("INSERT INTO ta_users (role_id, first_name, last_name, username, email, phone, reset_token, password_hash, is_active, invite_token, g_access_token, g_access_token_created_at, g_token_expires_in, g_id_token, current_session_id, last_login_time, created_at, last_updated) " +

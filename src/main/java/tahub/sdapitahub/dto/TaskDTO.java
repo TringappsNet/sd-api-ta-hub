@@ -43,8 +43,17 @@ public class TaskDTO {
     private LocalDateTime createdAt;
     @NotNull
     private LocalDateTime lastUpdated;
+    @NotNull
+    private int columnId;
 
-    //Getters and Setters
+    public int getColumnId() {
+        return columnId;
+    }
+
+    public void setColumnId(int columnId) {
+        this.columnId = columnId;
+    }
+//Getters and Setters
 
 
     public long getTask_id() {

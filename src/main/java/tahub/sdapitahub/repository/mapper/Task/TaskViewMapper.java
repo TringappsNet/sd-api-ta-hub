@@ -33,6 +33,7 @@ import java.time.LocalDateTime;
                     .lastUpdated(rs.getObject("last_updated", LocalDateTime.class))
 
                     .clientName(rs.getString("client_name"))
+                    .columnId(rs.getInt("column_id"))
 
                     .build();
         }

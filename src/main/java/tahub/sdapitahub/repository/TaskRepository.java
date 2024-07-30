@@ -62,7 +62,8 @@ public class TaskRepository {
                 task.getApprovalStatus(),
                 task.getDescription(),
                 task.getCreatedAt(),
-                task.getLastUpdated());
+                task.getLastUpdated(),
+                task.getColumnId());
         return task;
     }
 

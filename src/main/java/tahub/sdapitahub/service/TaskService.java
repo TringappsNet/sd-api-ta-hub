@@ -37,6 +37,7 @@ public class TaskService {
                         .approvalStatus(false)
                         .createdAt(LocalDateTime.now())
                         .lastUpdated(LocalDateTime.now())
+                        .columnId(taskDTO.getColumnId())
                         .build();
                 tasks.add(taskRepository.save(task));
             }
