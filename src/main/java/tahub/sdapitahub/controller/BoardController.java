@@ -27,7 +27,7 @@ public class BoardController {
     }
 
     @GetMapping("/column/{id}")
-    public ResponseEntity<Board> getBoardById(@PathVariable Long id) {
+    public ResponseEntity<Board> getBoardById(@PathVariable String id) {
         Optional<Board> board = boardService.getBoardById(id);
         return board.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -39,7 +39,7 @@ public class BoardController {
     }
 
     @PutMapping("/column/{id}")
-    public ResponseEntity<Board> updateBoard(@PathVariable Long id, @RequestBody BoardDTO boardDTO) {
+    public ResponseEntity<Board> updateBoard(@PathVariable String id, @RequestBody BoardDTO boardDTO) {
         Board updatedBoard = boardService.updateBoard(id, boardDTO);
         if (updatedBoard != null) {
             return new ResponseEntity<>(updatedBoard, HttpStatus.OK);
@@ -49,7 +49,7 @@ public class BoardController {
     }
 
     @DeleteMapping("/column/{id}")
-    public ResponseEntity<Void> deleteBoard(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBoard(@PathVariable String id) {
         boardService.deleteBoard(id);
         return ResponseEntity.noContent().build();
     }

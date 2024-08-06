@@ -25,7 +25,7 @@ public class BoardRepository {
         return jdbcTemplate.query(BoardQuery.FIND_ALL.getQuery(), new BoardMapper());
     }
 
-    public Optional<Board> findById(Long id) {
+    public Optional<Board> findById(String id) {
         return jdbcTemplate.query(BoardQuery.FIND_BY_ID.getQuery(), new Object[]{id}, new BoardMapper())
                 .stream().findFirst();
     }
@@ -35,7 +35,7 @@ public class BoardRepository {
         return board;
     }
 
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         jdbcTemplate.update(BoardQuery.DELETE_BY_ID.getQuery(), id);
     }
 
