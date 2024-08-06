@@ -44,13 +44,13 @@ public class TaskDTO {
     @NotNull
     private LocalDateTime lastUpdated;
     @NotNull
-    private int columnId;
+    private String columnId;
 
-    public int getColumnId() {
+    public String getColumnId() {
         return columnId;
     }
 
-    public void setColumnId(int columnId) {
+    public void setColumnId(String columnId) {
         this.columnId = columnId;
     }
 //Getters and Setters
