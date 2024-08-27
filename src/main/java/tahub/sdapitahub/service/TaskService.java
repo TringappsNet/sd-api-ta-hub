@@ -32,6 +32,8 @@ public class TaskService {
                         .yearsOfExperienceRequired(taskDTO.getYearsOfExperienceRequired())
                         .primarySkillSet(taskDTO.getPrimarySkillSet())
                         .secondarySkillSet(taskDTO.getSecondarySkillSet())
+                        .taskStatus("Low")
+                        .clientBudget(String.valueOf(jobRequirement.getSalaryBudget()))
                         .approvalStatus(false)
                         .createdAt(LocalDateTime.now())
                         .lastUpdated(LocalDateTime.now())
