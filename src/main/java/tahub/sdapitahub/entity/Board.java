@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonDeserialize(builder = Board.Builder.class)
 public class Board {
-    private Long id;
+    private String id;
     private String column;
 
     private Board(Builder builder) {
@@ -14,11 +14,11 @@ public class Board {
     }
 
     // Getters and Setters
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -32,10 +32,10 @@ public class Board {
 
     @JsonPOJOBuilder(withPrefix = "")
     public static class Builder {
-        private Long id;
+        private String id;
         private String column;
 
-        public Builder id(Long id) {
+        public Builder id(String id) {
             this.id = id;
             return this;
         }

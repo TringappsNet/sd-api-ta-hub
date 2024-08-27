@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import tahub.sdapitahub.entity.Task;
-import tahub.sdapitahub.entity.TaskCandidate;
 import tahub.sdapitahub.repository.mapper.Task.TaskMapper;
 import tahub.sdapitahub.repository.mapper.Task.TaskViewMapper;
-import tahub.sdapitahub.repository.mapper.TaskCandidates.TaskCandidateMapper;
-import tahub.sdapitahub.repository.query.TaskCandidateQuery;
 import tahub.sdapitahub.repository.query.TaskQuery;
 
 import java.util.ArrayList;
@@ -34,7 +31,7 @@ public class TaskRepository {
         return jdbcTemplate.query(TaskQuery.TASK_VIEW_ALL.getQuery(), new TaskViewMapper());
     }
 
-    public List<Task> fingTasksByJobId(Long id) {
+    public List<Task> findTasksByJobId(Long id) {
         return jdbcTemplate.query(TaskQuery.FIND_BY_JOB_ID.getQuery(),new Object[]{id}, new TaskMapper());
     }
 
@@ -134,7 +131,11 @@ public class TaskRepository {
             queryParams.add(task.getLastUpdated());
             fieldsUpdated = true;
         }
-
+        if (task.getColumnId() != null) {
+            queryBuilder.append("column_id = ?, ");
+            queryParams.add(task.getColumnId());
+            fieldsUpdated = true;
+        }
         if (fieldsUpdated) {
             queryBuilder.setLength(queryBuilder.length() - 2);
             queryBuilder.append(" WHERE task_id = ?");
@@ -142,6 +143,7 @@ public class TaskRepository {
 
             jdbcTemplate.update(queryBuilder.toString(), queryParams.toArray());
         }
+
 
         return task;
     }

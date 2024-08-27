@@ -10,7 +10,7 @@ public class BoardMapper implements RowMapper<Board> {
     @Override
     public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Board.Builder()
-                .id(rs.getLong("id"))
+                .id(rs.getString("id"))
                 .column(rs.getString("columns"))
                 .build();
     }

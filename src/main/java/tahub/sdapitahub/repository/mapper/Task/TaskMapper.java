@@ -30,7 +30,7 @@ public class TaskMapper implements RowMapper<Task> {
                 .description(rs.getString("description"))
                 .createdAt(rs.getObject("created_at", LocalDateTime.class))
                 .lastUpdated(rs.getObject("last_updated", LocalDateTime.class))
-                .columnId(rs.getInt("column_id"))
+                .columnId(rs.getString("column_id"))
                 .build();
     }
 

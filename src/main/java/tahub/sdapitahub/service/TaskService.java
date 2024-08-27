@@ -3,9 +3,7 @@ package tahub.sdapitahub.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tahub.sdapitahub.entity.JobRequirement;
-import tahub.sdapitahub.entity.TaUser;
 import tahub.sdapitahub.entity.Task;
-import tahub.sdapitahub.entity.TaskCandidate;
 import tahub.sdapitahub.repository.TaskRepository;
 import tahub.sdapitahub.dto.TaskDTO;
 
@@ -34,10 +32,12 @@ public class TaskService {
                         .yearsOfExperienceRequired(taskDTO.getYearsOfExperienceRequired())
                         .primarySkillSet(taskDTO.getPrimarySkillSet())
                         .secondarySkillSet(taskDTO.getSecondarySkillSet())
+                        .taskStatus("Low")
+                        .clientBudget(String.valueOf(jobRequirement.getSalaryBudget()))
                         .approvalStatus(false)
                         .createdAt(LocalDateTime.now())
                         .lastUpdated(LocalDateTime.now())
-                        .columnId(taskDTO.getColumnId())
+                        .columnId("8ff37b68-3279-475a-8470-77a643b1cfdc")
                         .build();
                 tasks.add(taskRepository.save(task));
             }
@@ -60,7 +60,7 @@ public class TaskService {
 
 
     public List<Task> getTasksByJobId(Long jobId) {
-        return taskRepository.fingTasksByJobId(jobId);
+        return taskRepository.findTasksByJobId(jobId);
     }
 
 
@@ -72,6 +72,7 @@ public class TaskService {
 
     public Task updateTask(Long id, Task task) {
         task.setTaskId(id);
+
         task.setLastUpdated(LocalDateTime.now());
         return taskRepository.update(task);
     }

@@ -19,7 +19,7 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
-    public Optional<Board> getBoardById(Long id) {
+    public Optional<Board> getBoardById(String id) {
         return boardRepository.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class BoardService {
         return boardRepository.save(board);
     }
 
-    public Board updateBoard(Long id, BoardDTO boardDTO) {
+    public Board updateBoard(String id, BoardDTO boardDTO) {
         Board board = new Board.Builder()
                 .id(id)
                 .column(boardDTO.getColumn())
@@ -38,7 +38,7 @@ public class BoardService {
         return boardRepository.update(board);
     }
 
-    public void deleteBoard(Long id) {
+    public void deleteBoard(String id) {
         boardRepository.deleteById(id);
     }
 }
